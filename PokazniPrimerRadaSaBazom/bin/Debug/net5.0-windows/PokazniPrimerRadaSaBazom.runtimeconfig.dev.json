@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\masavic\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\masavic\\.nuget\\packages"
+    ]
+  }
+}
