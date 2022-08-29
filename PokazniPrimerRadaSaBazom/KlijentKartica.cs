@@ -7,23 +7,18 @@ using System.Windows.Forms;
 
 namespace PokazniPrimerRadaSaBazom
 {
-    class KlijentKartica : Panel
+    class KlijentKartica
     {
-        private Klijent klijent;
-        private Label tekst = new Label();
-        private Button btnObrisi = new Button();
-        private Button btnIzmeni = new Button();
-        public KlijentKartica(Klijent model) {
-
+        Klijent klijent;
+        Button obrisi;
+        Button izmeni;
+        Label tekst;
+        public KlijentKartica(Klijent model, Button obrisi, Button izmeni, Label tekst) {
             this.klijent = model;
-            
-            this.tekst.Text = this.klijent.ToString();
-            //this.btnObrisi.Click += obrisiKlijenta;
-            this.Controls.Add(tekst);
-            this.Controls.Add(btnObrisi);
-            this.Controls.Add(btnIzmeni);
+            this.obrisi = obrisi;
+            this.izmeni = izmeni;
+            this.tekst = tekst;
         }
-
-      
     }
+
 }

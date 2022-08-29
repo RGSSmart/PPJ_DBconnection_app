@@ -9,90 +9,70 @@ namespace PokazniPrimerRadaSaBazom
 {
     public partial class Form1 : Form
     {
-        private MySqlConnection conn;
-        private string myConnectionString = "server=127.0.0.1;uid=root;pwd=root;database=frizeraj";
-
+        
         public Form1()
         {
             InitializeComponent();
+            DBUtil.initialization();
         }
+        private static void obrisiKlijenta(object sender, EventArgs e)
+        {
+            //((Button)sender).Name
+                var target = ((Button)sender).Name;
+                target = target.Split('_')[1];
+            if (MessageBox.Show("Da li zelite da obrisete klijenta sa ID-em " + target + "?", "Brisanje klijenta", MessageBoxButtons.YesNo) == DialogResult.Yes) {
+                DBUtil.obrisi_klijenta_po_ID(int.Parse(target));
+                
+            }
+        }
+        private void prikazi_klijente_iz_baze() {
 
+            var result = DBUtil.ucitaj_korisnike();
+            tabela.Controls.Clear();
+            int row = 2;
+            foreach (var res in result)
+            {
+                Label tekst = new Label();
+                tekst.Text = res.ToString();
+                Button obrisi = new Button();
+                obrisi.Text = "Obrisi";
+                obrisi.Name = "delete_" + res.Id;
+                obrisi.Click += obrisiKlijenta;
+                Button izmeni = new Button();
+                izmeni.Text = "Izmeni";
+                izmeni.Name = "edit_" + res.Id;
+                tabela.Controls.Add(tekst,  0, row);
+                tabela.Controls.Add(obrisi, 1, row);
+                tabela.Controls.Add(izmeni, 2, row);
+                tabela.RowCount++;
+                row++;
+
+            }
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
 
-            ucitaj_klijente();
+            prikazi_klijente_iz_baze();
+
         }
-
-
-        private void obrisiKlijenta(object sender, EventArgs e)
+        public void dodaj_klijenta() 
         {
-            MessageBox.Show(((Button)sender).Name);
-        }
-        private void ucitaj_klijente()
-        {          
-            try
-            {
-                conn = new MySql.Data.MySqlClient.MySqlConnection(myConnectionString);                
-                conn.Open();
-                MySqlCommand cmd = new MySqlCommand("SELECT * from klijent", conn);
-                MySqlDataReader rdr = cmd.ExecuteReader();
-
-                tabela.Controls.Clear();
-                int row = 0;
-                while (rdr.Read())
-                {
-                    //lbSviKlijenti.Items.Add(new KlijentKartica(new  Klijent((int)rdr[0], (string)rdr[1])));
-                    Klijent novi_klijent = new Klijent((int)rdr[0], (string)rdr[1]);
-                    Label tekst = new Label();
-                    tekst.Text = novi_klijent.ToString();
-                    Button obrisi = new Button();
-                    obrisi.Text = "Obrisi";
-                    obrisi.Name = "delete_" + novi_klijent.Id;
-                    obrisi.Click += obrisiKlijenta;
-                    Button izmeni = new Button();
-                    izmeni.Text = "Izmeni";
-                    izmeni.Name = "edit_" + novi_klijent.Id;
-                    tabela.Controls.Add(tekst,0,row);
-                    tabela.Controls.Add(obrisi,1,row);
-                    tabela.Controls.Add(izmeni,2,row);
-                    tabela.RowCount++;
-                    row++;
-                }
-                conn.Close();
-            }
-            catch (MySql.Data.MySqlClient.MySqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-        }
-        private void dodaj_klijenta() {
 
             Klijent novi_klijent = new Klijent();
             novi_klijent.Ime = txtImeKlijenta.Text;
-            try
-            {
-                conn = new MySqlConnection(myConnectionString);
-                conn.Open();
-                MySqlCommand cmd = new MySqlCommand(String.Format("INSERT INTO KLIJENT (ime) VALUES ('{0}');SELECT LAST_INSERT_ID();", novi_klijent.Ime), conn);
-                MySqlDataReader rdr = cmd.ExecuteReader();
-                rdr.Read();
-                novi_klijent.Id = (UInt64)rdr[0];
-                lbSviKlijenti.Items.Add(novi_klijent);
-                
-                conn.Close();
-            }
-            catch (MySql.Data.MySqlClient.MySqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
+            novi_klijent = DBUtil.dodaj_novog_klijenta(novi_klijent);
+            prikazi_klijente_iz_baze();
         }
 
         private void btnDodajKlijenta_Click(object sender, EventArgs e)
         {
             dodaj_klijenta();
             
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            prikazi_klijente_iz_baze();
         }
     }
 }

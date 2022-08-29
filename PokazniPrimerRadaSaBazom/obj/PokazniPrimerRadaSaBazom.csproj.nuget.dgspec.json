@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\masavic\\source\\repos\\PokazniPrimerRadaSaBazom\\PokazniPrimerRadaSaBazom\\PokazniPrimerRadaSaBazom.csproj": {}
+    "C:\\Users\\spahija\\Documents\\GitHub\\PPJ_DBconnection_app\\PokazniPrimerRadaSaBazom\\PokazniPrimerRadaSaBazom.csproj": {}
   },
   "projects": {
-    "C:\\Users\\masavic\\source\\repos\\PokazniPrimerRadaSaBazom\\PokazniPrimerRadaSaBazom\\PokazniPrimerRadaSaBazom.csproj": {
+    "C:\\Users\\spahija\\Documents\\GitHub\\PPJ_DBconnection_app\\PokazniPrimerRadaSaBazom\\PokazniPrimerRadaSaBazom.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\masavic\\source\\repos\\PokazniPrimerRadaSaBazom\\PokazniPrimerRadaSaBazom\\PokazniPrimerRadaSaBazom.csproj",
+        "projectUniqueName": "C:\\Users\\spahija\\Documents\\GitHub\\PPJ_DBconnection_app\\PokazniPrimerRadaSaBazom\\PokazniPrimerRadaSaBazom.csproj",
         "projectName": "PokazniPrimerRadaSaBazom",
-        "projectPath": "C:\\Users\\masavic\\source\\repos\\PokazniPrimerRadaSaBazom\\PokazniPrimerRadaSaBazom\\PokazniPrimerRadaSaBazom.csproj",
-        "packagesPath": "C:\\Users\\masavic\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\masavic\\source\\repos\\PokazniPrimerRadaSaBazom\\PokazniPrimerRadaSaBazom\\obj\\",
+        "projectPath": "C:\\Users\\spahija\\Documents\\GitHub\\PPJ_DBconnection_app\\PokazniPrimerRadaSaBazom\\PokazniPrimerRadaSaBazom.csproj",
+        "packagesPath": "C:\\Users\\spahija\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\spahija\\Documents\\GitHub\\PPJ_DBconnection_app\\PokazniPrimerRadaSaBazom\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\masavic\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\spahija\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -67,7 +71,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.108\\RuntimeIdentifierGraph.json"
         }
       }
     }
